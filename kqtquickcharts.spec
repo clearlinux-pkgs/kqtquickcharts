@@ -5,19 +5,19 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kqtquickcharts
-Version  : 18.08.0
-Release  : 1
-URL      : https://download.kde.org/stable/applications/18.08.0/src/kqtquickcharts-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/kqtquickcharts-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/kqtquickcharts-18.08.0.tar.xz.sig
+Version  : 18.12.2
+Release  : 2
+URL      : https://download.kde.org/stable/applications/18.12.2/src/kqtquickcharts-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/kqtquickcharts-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/kqtquickcharts-18.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
-Requires: kqtquickcharts-lib
-Requires: kqtquickcharts-license
+Requires: kqtquickcharts-lib = %{version}-%{release}
+Requires: kqtquickcharts-license = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 
 %description
 kqtquickcharts
@@ -28,8 +28,8 @@ Beautiful and interactive charts for Qt Quick
 %package dev
 Summary: dev components for the kqtquickcharts package.
 Group: Development
-Requires: kqtquickcharts-lib
-Provides: kqtquickcharts-devel
+Requires: kqtquickcharts-lib = %{version}-%{release}
+Provides: kqtquickcharts-devel = %{version}-%{release}
 
 %description dev
 dev components for the kqtquickcharts package.
@@ -38,7 +38,7 @@ dev components for the kqtquickcharts package.
 %package lib
 Summary: lib components for the kqtquickcharts package.
 Group: Libraries
-Requires: kqtquickcharts-license
+Requires: kqtquickcharts-license = %{version}-%{release}
 
 %description lib
 lib components for the kqtquickcharts package.
@@ -53,25 +53,25 @@ license components for the kqtquickcharts package.
 
 
 %prep
-%setup -q -n kqtquickcharts-18.08.0
+%setup -q -n kqtquickcharts-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535201008
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549873239
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535201008
+export SOURCE_DATE_EPOCH=1549873239
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/kqtquickcharts
-cp COPYING %{buildroot}/usr/share/doc/kqtquickcharts/COPYING
+mkdir -p %{buildroot}/usr/share/package-licenses/kqtquickcharts
+cp COPYING %{buildroot}/usr/share/package-licenses/kqtquickcharts/COPYING
 pushd clr-build
 %make_install
 popd
@@ -96,5 +96,5 @@ popd
 /usr/lib64/qt5/qml/org/kde/charts/qmldir
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/kqtquickcharts/COPYING
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/kqtquickcharts/COPYING
