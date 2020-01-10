@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kqtquickcharts
-Version  : 19.12.0
-Release  : 14
-URL      : https://download.kde.org/stable/release-service/19.12.0/src/kqtquickcharts-19.12.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/19.12.0/src/kqtquickcharts-19.12.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/19.12.0/src/kqtquickcharts-19.12.0.tar.xz.sig
+Version  : 19.12.1
+Release  : 15
+URL      : https://download.kde.org/stable/release-service/19.12.1/src/kqtquickcharts-19.12.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/19.12.1/src/kqtquickcharts-19.12.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/19.12.1/src/kqtquickcharts-19.12.1.tar.xz.sig
 Summary  : A QtQuick plugin to render beautiful and interactive charts
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -55,15 +55,15 @@ license components for the kqtquickcharts package.
 
 
 %prep
-%setup -q -n kqtquickcharts-19.12.0
-cd %{_builddir}/kqtquickcharts-19.12.0
+%setup -q -n kqtquickcharts-19.12.1
+cd %{_builddir}/kqtquickcharts-19.12.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1576561884
+export SOURCE_DATE_EPOCH=1578679674
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -80,10 +80,10 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1576561884
+export SOURCE_DATE_EPOCH=1578679674
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kqtquickcharts
-cp %{_builddir}/kqtquickcharts-19.12.0/COPYING %{buildroot}/usr/share/package-licenses/kqtquickcharts/f425e50e051b87590a5c1ac4d6f52506ff12d134
+cp %{_builddir}/kqtquickcharts-19.12.1/COPYING %{buildroot}/usr/share/package-licenses/kqtquickcharts/f425e50e051b87590a5c1ac4d6f52506ff12d134
 pushd clr-build
 %make_install
 popd
