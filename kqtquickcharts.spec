@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kqtquickcharts
-Version  : 22.04.0
-Release  : 37
-URL      : https://download.kde.org/stable/release-service/22.04.0/src/kqtquickcharts-22.04.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.04.0/src/kqtquickcharts-22.04.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.04.0/src/kqtquickcharts-22.04.0.tar.xz.sig
+Version  : 22.04.1
+Release  : 38
+URL      : https://download.kde.org/stable/release-service/22.04.1/src/kqtquickcharts-22.04.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.04.1/src/kqtquickcharts-22.04.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.04.1/src/kqtquickcharts-22.04.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -55,15 +55,15 @@ license components for the kqtquickcharts package.
 
 
 %prep
-%setup -q -n kqtquickcharts-22.04.0
-cd %{_builddir}/kqtquickcharts-22.04.0
+%setup -q -n kqtquickcharts-22.04.1
+cd %{_builddir}/kqtquickcharts-22.04.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1650663879
+export SOURCE_DATE_EPOCH=1652641867
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -79,10 +79,10 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1650663879
+export SOURCE_DATE_EPOCH=1652641867
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kqtquickcharts
-cp %{_builddir}/kqtquickcharts-22.04.0/COPYING %{buildroot}/usr/share/package-licenses/kqtquickcharts/f425e50e051b87590a5c1ac4d6f52506ff12d134
+cp %{_builddir}/kqtquickcharts-22.04.1/COPYING %{buildroot}/usr/share/package-licenses/kqtquickcharts/f425e50e051b87590a5c1ac4d6f52506ff12d134
 pushd clr-build
 %make_install
 popd
